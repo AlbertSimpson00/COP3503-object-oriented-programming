@@ -32,6 +32,77 @@ public class Project1 {
 
         String[] names = readNames(scnr);
 
+        int optionChoice = -1;
+        while (optionChoice != 0) {
+            printMenu(); // Figured I'd add this for readability purposes in main
+            optionChoice = readChoice(scnr); // Again for maintaining readability
+
+            switch (optionChoice) {
+                case 1:
+                    System.out.println("1");
+                    break;
+                case 2:
+                    System.out.println("2");
+                    break;
+                case 3:
+                    System.out.println("3");
+                    break;
+                case 4:
+                    System.out.println("4");
+                    break;
+                case 5:
+                    System.out.println("5");
+                    break;
+                case 6:
+                    System.out.println("6");
+                    break;
+                case 7:
+                    System.out.println("7");
+                    break;
+                case 8:
+                    System.out.println("8");
+                    break;
+                case 9:
+                    System.out.println("9");
+                    break;
+                case 0:
+                    System.out.println("Program Exiting");
+                    break;
+            }
+
+        }
+    }
+
+    public static void printMenu() {
+        System.out.println();
+        System.out.println(); // Readability in terminal
+
+
+        System.out.println("Please choose an option:");
+        System.out.println("1: Display List Ordered");
+        System.out.println("2: Display Full Names");
+        System.out.println("3: Display Single Names");
+        System.out.println("4: Display Name Sta�s�cs");
+        System.out.println("5: Display Names with Even Length");
+        System.out.println("6: Display Names with Odd Length");
+        System.out.println("7: Display Names not Capitalized");
+        System.out.println("8: Display Most Frequent Name");
+        System.out.println("9: Enter new list of Names");
+        System.out.println("0: Quit Program");
+    }
+
+    public static int readChoice(Scanner scnr) {
+        while(true) {
+            System.out.print("Choice: ");
+            if (scnr.hasNextInt()) {
+                int choice = scnr.nextInt();
+                scnr.nextLine(); // Consume end of line to avoid issues
+                return choice;
+            } else {
+                System.out.println("Bad input. Please enter a number.");
+                scnr.nextLine(); // Discard bad read
+            }
+        }
     }
 
     public static String[] readNames(Scanner scnr) {
@@ -44,5 +115,14 @@ public class Project1 {
         }
         return names;
     }
+
+    // ========= Option 1 =========
+    // ========= Option 2 =========
+    // ========= Option 3 =========
+    // ========= Option 4 =========
+    // ========= Option 5 =========
+    // ========= Option 6 =========
+    // ========= Option 7 =========
+    // ========= Option 8 =========
 
 }
