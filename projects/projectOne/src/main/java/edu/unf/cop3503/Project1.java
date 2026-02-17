@@ -43,9 +43,11 @@ public class Project1 {
                     break;
                 case 2:
                     System.out.println("2");
+                    displayFullNames(names);
                     break;
                 case 3:
                     System.out.println("3");
+                    displaySingleNames(names);
                     break;
                 case 4:
                     System.out.println("4");
@@ -126,6 +128,13 @@ public class Project1 {
         }
     }
     // ========= Option 3 =========
+    public static void displaySingleNames(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            if (!names[i].contains(" ")) { // Checks if the current element contains a space
+                System.out.println(names[i]);
+            }
+        }
+    }
     // ========= Option 4 =========
     // ========= Option 5 =========
     // ========= Option 6 =========
