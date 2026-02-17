@@ -54,6 +54,7 @@ public class Project1 {
                     break;
                 case 5:
                     System.out.println("5");
+                    displayEvenLengthNames(names);
                     break;
                 case 6:
                     System.out.println("6");
@@ -137,6 +138,26 @@ public class Project1 {
     }
     // ========= Option 4 =========
     // ========= Option 5 =========
+    public static void displayEvenLengthNames(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            int nameLength = lengthWithoutSpaces(names[i]);
+
+            if (nameLength % 2 == 0) {
+                System.out.println(names[i]);
+            }
+        }
+    }
+
+    public static int lengthWithoutSpaces(String name) {
+        int counter = 0;
+
+        for (int i = 0; i < name.length(); i++) {
+            if (name.charAt(i) != ' ') {
+                counter++;
+            }
+        }
+        return counter;
+    }
     // ========= Option 6 =========
     // ========= Option 7 =========
     // ========= Option 8 =========
