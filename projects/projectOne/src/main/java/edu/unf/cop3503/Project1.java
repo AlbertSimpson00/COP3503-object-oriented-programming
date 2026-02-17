@@ -40,6 +40,7 @@ public class Project1 {
             switch (optionChoice) {
                 case 1:
                     System.out.println("1");
+                    // displayListOrdered();
                     break;
                 case 2:
                     System.out.println("2");
@@ -51,6 +52,7 @@ public class Project1 {
                     break;
                 case 4:
                     System.out.println("4");
+                    // displayNameStatistics();
                     break;
                 case 5:
                     System.out.println("5");
@@ -62,12 +64,15 @@ public class Project1 {
                     break;
                 case 7:
                     System.out.println("7");
+                    // displayNamesNotCapitalized();
                     break;
                 case 8:
                     System.out.println("8");
+                    // displayMostFrequentName();
                     break;
                 case 9:
                     System.out.println("9");
+                    // names = readNames(scnr);
                     break;
                 case 0:
                     System.out.println("Program Exiting");
@@ -121,6 +126,7 @@ public class Project1 {
     }
 
     // ========= Option 1 =========
+
     // ========= Option 2 =========
     public static void displayFullNames(String[] names) {
         for (int i = 0; i < names.length; i++) {
