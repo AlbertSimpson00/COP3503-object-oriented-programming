@@ -118,6 +118,13 @@ public class Project1 {
 
     // ========= Option 1 =========
     // ========= Option 2 =========
+    public static void displayFullNames(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].contains(" ")) { // Checks if the current element contains a space
+                System.out.println(names[i]);
+            }
+        }
+    }
     // ========= Option 3 =========
     // ========= Option 4 =========
     // ========= Option 5 =========
