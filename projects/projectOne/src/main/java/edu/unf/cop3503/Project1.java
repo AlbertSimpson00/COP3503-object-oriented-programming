@@ -58,6 +58,7 @@ public class Project1 {
                     break;
                 case 6:
                     System.out.println("6");
+                    displayOddLengthNames(names);
                     break;
                 case 7:
                     System.out.println("7");
@@ -85,7 +86,7 @@ public class Project1 {
         System.out.println("1: Display List Ordered");
         System.out.println("2: Display Full Names");
         System.out.println("3: Display Single Names");
-        System.out.println("4: Display Name Sta�s�cs");
+        System.out.println("4: Display Name Statistics");
         System.out.println("5: Display Names with Even Length");
         System.out.println("6: Display Names with Odd Length");
         System.out.println("7: Display Names not Capitalized");
@@ -159,6 +160,15 @@ public class Project1 {
         return counter;
     }
     // ========= Option 6 =========
+    public static void displayOddLengthNames(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            int nameLength = lengthWithoutSpaces(names[i]); // Uses helper method found in option 5 section
+
+            if (nameLength % 2 == 1) {
+                System.out.println(names[i]);
+            }
+        }
+    }
     // ========= Option 7 =========
     // ========= Option 8 =========
 
