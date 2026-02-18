@@ -40,7 +40,7 @@ public class Project1 {
             switch (optionChoice) {
                 case 1:
                     System.out.println("1");
-                    // displayListOrdered();
+                    // displayOrderedList(names);
                     break;
                 case 2:
                     System.out.println("2");
@@ -115,7 +115,7 @@ public class Project1 {
     }
 
     public static String[] readNames(Scanner scnr) {
-        System.out.println("Enter List of Names Separated by Commas");
+        System.out.println("Enter List of Names Separated by Commas:");
         String inputLine = scnr.nextLine();
 
         String[] names = inputLine.split(","); // splits inputLine into an array names
@@ -126,12 +126,14 @@ public class Project1 {
     }
 
     // ========= Option 1 =========
-
     // ========= Option 2 =========
     public static void displayFullNames(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            if (names[i].contains(" ")) { // Checks if the current element contains a space
-                System.out.println(names[i]);
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < copiedNames.length; i++) {
+            if (copiedNames[i].contains(" ")) {
+                System.out.println(copiedNames[i]);
             }
         }
     }
