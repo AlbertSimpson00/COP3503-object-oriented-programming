@@ -34,8 +34,8 @@ public class Project1 {
 
         int optionChoice = -1;
         while (optionChoice != 0) {
-            printMenu(); // Figured I'd add this for readability purposes in main
-            optionChoice = readChoice(scnr); // Again for maintaining readability
+            printMenu(); // Using method for readability purposes in main
+            optionChoice = readChoice(scnr); // Method for maintaining readability
 
             switch (optionChoice) {
                 case 1:
@@ -155,7 +155,39 @@ public class Project1 {
             }
         }
     }
-    // ========= Option 4 =========
+    // ========= Option 4 =========\
+    public static void displayNameStatistics(String[] names) {
+        int nameCount = names.length;
+
+        int totalLetters = 0;
+        for (int i = 0; i < names.length; i++) {
+            totalLetters += lengthWithoutSpaces(names[i]);
+        }
+
+        double avgLength = (double) totalLetters/nameCount;
+
+        String shortest = names[0];
+        String longest = names[0];
+
+        for (int i = 1; i < names.length; i++) {
+            if (lengthWithoutSpaces(names[i]) < lengthWithoutSpaces(shortest)) {
+                shortest = names[i];
+            }
+            if (lengthWithoutSpaces(names[i]) > lengthWithoutSpaces(longest)) {
+                longest = names[i];
+            }
+        }
+
+        // Population Standard deviation
+
+        // Prints
+        System.out.println("Name Count: " + nameCount);
+        System.out.println("Letter Count Total: " + totalLetters);
+        System.out.printf("Avg Name Length: %.2f%n", avgLength);
+        System.out.println("Shortest Name: " + shortest);
+        System.out.println("Longest Name: " + longest);
+        // Need Population Standard deviation.
+    }
     // ========= Option 5 =========
     public static void displayEvenLengthNames(String[] names) {
         String[] copiedNames = Arrays.copyOf(names, names.length);
