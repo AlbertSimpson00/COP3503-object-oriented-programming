@@ -178,7 +178,7 @@ public class Project1 {
             }
         }
 
-        // Population Standard deviation
+        // Population Standard deviation, maybe new method implementation separately
 
         // Prints
         System.out.println("Name Count: " + nameCount);
@@ -186,7 +186,7 @@ public class Project1 {
         System.out.printf("Avg Name Length: %.2f%n", avgLength);
         System.out.println("Shortest Name: " + shortest);
         System.out.println("Longest Name: " + longest);
-        // Need Population Standard deviation.
+        // Need Population Standard deviation
     }
     // ========= Option 5 =========
     public static void displayEvenLengthNames(String[] names) {
