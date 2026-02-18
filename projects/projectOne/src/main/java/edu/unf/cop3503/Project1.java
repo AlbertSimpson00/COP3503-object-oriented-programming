@@ -40,7 +40,7 @@ public class Project1 {
             switch (optionChoice) {
                 case 1:
                     System.out.println("1");
-                    // displayOrderedList(names);
+                    displayOrderedList(names);
                     break;
                 case 2:
                     System.out.println("2");
@@ -87,26 +87,28 @@ public class Project1 {
         System.out.println(); // Readability in terminal
 
 
-        System.out.println("Please choose an option:");
-        System.out.println("1: Display List Ordered");
-        System.out.println("2: Display Full Names");
-        System.out.println("3: Display Single Names");
-        System.out.println("4: Display Name Statistics");
-        System.out.println("5: Display Names with Even Length");
-        System.out.println("6: Display Names with Odd Length");
-        System.out.println("7: Display Names not Capitalized");
-        System.out.println("8: Display Most Frequent Name");
-        System.out.println("9: Enter new list of Names");
-        System.out.println("0: Quit Program");
+        System.out.println("Please make a selection:");
+        System.out.println("1) Display List Ordered");
+        System.out.println("2) Display Full Names");
+        System.out.println("3) Display Single Names");
+        System.out.println("4) Display Name Statistics");
+        System.out.println("5) Display Names with Even Length");
+        System.out.println("6) Display Names with Odd Length");
+        System.out.println("7) Display Names not Capitalized");
+        System.out.println("8) Display Most Frequent Name");
+        System.out.println("9) Enter new list of Names");
+        System.out.println("0) Quit Program");
     }
 
     public static int readChoice(Scanner scnr) {
         while(true) {
-            System.out.print("Choice: ");
             if (scnr.hasNextInt()) {
                 int choice = scnr.nextInt();
-                scnr.nextLine(); // Consume end of line to avoid issues
-                return choice;
+                scnr.nextLine(); // Consume newline to avoid issues
+                if (choice >= 0&& choice <= 9) {
+                    return choice;
+                }
+                System.out.println("Bad input. Please enter a number 0-9.");
             } else {
                 System.out.println("Bad input. Please enter a number.");
                 scnr.nextLine(); // Discard bad read
@@ -126,6 +128,11 @@ public class Project1 {
     }
 
     // ========= Option 1 =========
+    public static void displayOrderedList(String[] names) {
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+        System.out.println(Arrays.toString(copiedNames));
+    }
     // ========= Option 2 =========
     public static void displayFullNames(String[] names) {
         String[] copiedNames = Arrays.copyOf(names, names.length);
@@ -139,20 +146,26 @@ public class Project1 {
     }
     // ========= Option 3 =========
     public static void displaySingleNames(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            if (!names[i].contains(" ")) { // Checks if the current element contains a space
-                System.out.println(names[i]);
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < copiedNames.length; i++) {
+            if (!copiedNames[i].contains(" ")) {
+                System.out.println(copiedNames[i]);
             }
         }
     }
     // ========= Option 4 =========
     // ========= Option 5 =========
     public static void displayEvenLengthNames(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            int nameLength = lengthWithoutSpaces(names[i]);
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < copiedNames.length; i++) {
+            int nameLength = lengthWithoutSpaces(copiedNames[i]);
 
             if (nameLength % 2 == 0) {
-                System.out.println(names[i]);
+                System.out.println(copiedNames[i]);
             }
         }
     }
@@ -169,11 +182,14 @@ public class Project1 {
     }
     // ========= Option 6 =========
     public static void displayOddLengthNames(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            int nameLength = lengthWithoutSpaces(names[i]); // Uses helper method found in option 5 section
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < copiedNames.length; i++) {
+            int nameLength = lengthWithoutSpaces(copiedNames[i]); // Uses helper method found in option 5 section
 
             if (nameLength % 2 == 1) {
-                System.out.println(names[i]);
+                System.out.println(copiedNames[i]);
             }
         }
     }
