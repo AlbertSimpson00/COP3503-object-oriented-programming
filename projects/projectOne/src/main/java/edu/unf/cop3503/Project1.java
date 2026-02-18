@@ -64,7 +64,7 @@ public class Project1 {
                     break;
                 case 7:
                     System.out.println("7");
-                    // displayNamesNotCapitalized();
+                    displayNamesNotCapitalized(names);
                     break;
                 case 8:
                     System.out.println("8");
@@ -226,6 +226,17 @@ public class Project1 {
         }
     }
     // ========= Option 7 =========
+    public static void displayNamesNotCapitalized(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            String[] parts = names[i].split(" "); // full names are space delimted
+
+            for (int j = 0; j < parts.length; j++) {
+                if (parts[j].length() > 0 && !Character.isUpperCase(parts[j].charAt(0))) {
+                    System.out.println(parts[j]);
+                }
+            }
+        }
+    }
     // ========= Option 8 =========
 
 }
