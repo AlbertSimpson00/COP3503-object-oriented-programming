@@ -5,28 +5,6 @@ import java.util.Scanner;
 
 public class Project1 {
 
-    /*public static ArrayList<String> newNamesList(String names) {
-        ArrayList<String> nameArray = new ArrayList<>();
-        StringBuilder temp = new StringBuilder();
-        char curr = ' ';
-        String fullName = temp.toString();
-
-        for(int i = 0; i < names.length(); i++) {
-            curr = names.charAt(i);
-            if (curr == ',') {
-                fullName = fullName.trim();
-                nameArray.add(String.valueOf(fullName)); // Convert StringBuilder to type String for namesArray
-                temp.setLength(0); // Reset StringBuilder
-            } else {
-                temp.append(curr);
-            }
-        }
-        nameArray.add(String.valueOf(fullName)); // Add remaining inside temp since last name does not end with "comma"
-        return nameArray;
-    }
-    */
-
-
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
 
@@ -39,40 +17,31 @@ public class Project1 {
 
             switch (optionChoice) {
                 case 1:
-                    System.out.println("1");
                     displayOrderedList(names);
                     break;
                 case 2:
-                    System.out.println("2");
                     displayFullNames(names);
                     break;
                 case 3:
-                    System.out.println("3");
                     displaySingleNames(names);
                     break;
                 case 4:
-                    System.out.println("4");
-                    // displayNameStatistics();
+                    displayNameStatistics(names);
                     break;
                 case 5:
-                    System.out.println("5");
                     displayEvenLengthNames(names);
                     break;
                 case 6:
-                    System.out.println("6");
                     displayOddLengthNames(names);
                     break;
                 case 7:
-                    System.out.println("7");
                     displayNamesNotCapitalized(names);
                     break;
                 case 8:
-                    System.out.println("8");
                     displayMostFrequentName(names);
                     break;
                 case 9:
-                    System.out.println("9");
-                    // names = readNames(scnr);
+                    names = readNames(scnr);
                     break;
                 case 0:
                     System.out.println("Program Exiting");
@@ -178,15 +147,28 @@ public class Project1 {
             }
         }
 
-        // Population Standard deviation, maybe new method implementation separately
+        // Population Standard deviation
+        double variance = sumOfSquares(names, avgLength) / names.length;
+        double stdDeviation = Math.sqrt(variance);
 
         // Prints
         System.out.println("Name Count: " + nameCount);
         System.out.println("Letter Count Total: " + totalLetters);
-        System.out.printf("Avg Name Length: %.2f%n", avgLength);
+        System.out.printf("Avg Name Length: %.1f%n", avgLength);
         System.out.println("Shortest Name: " + shortest);
         System.out.println("Longest Name: " + longest);
-        // Need Population Standard deviation
+        System.out.printf("Population Standard Deviation: %.2f%n", stdDeviation);
+    }
+
+    public static double sumOfSquares(String[] names, double avgLength) {
+        double sumSquares = 0;
+
+        for (int i = 0; i < names.length; i++) {
+            int length = lengthWithoutSpaces(names[i]);
+            sumSquares += Math.pow(length - avgLength, 2);
+        }
+
+        return sumSquares;
     }
     // ========= Option 5 =========
     public static void displayEvenLengthNames(String[] names) {
@@ -227,8 +209,11 @@ public class Project1 {
     }
     // ========= Option 7 =========
     public static void displayNamesNotCapitalized(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            String[] parts = names[i].split(" "); // full names are space delimted
+        String[] copiedNames = Arrays.copyOf(names, names.length);
+        Arrays.sort(copiedNames, String.CASE_INSENSITIVE_ORDER);
+
+        for (int i = 0; i < copiedNames.length; i++) {
+            String[] parts = copiedNames[i].split(" "); // full names are space delimted
 
             for (int j = 0; j < parts.length; j++) {
                 if (parts[j].length() > 0 && !Character.isUpperCase(parts[j].charAt(0))) {
