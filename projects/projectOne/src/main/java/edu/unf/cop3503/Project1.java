@@ -68,7 +68,7 @@ public class Project1 {
                     break;
                 case 8:
                     System.out.println("8");
-                    // displayMostFrequentName();
+                    displayMostFrequentName(names);
                     break;
                 case 9:
                     System.out.println("9");
@@ -238,5 +238,29 @@ public class Project1 {
         }
     }
     // ========= Option 8 =========
+    public static void displayMostFrequentName(String[] names) {
+        int frequentCount = 1;
+        int frequentIndex = -1;
 
+        for (int i = 0; i < names.length; i++) {
+            int count = 0;
+
+            for (int j = 0; j < names.length; j++) {
+                if (names[i].equalsIgnoreCase(names[j])) {
+                    count++;
+                }
+            }
+
+            if (count > frequentCount) {
+                frequentCount = count;
+                frequentIndex = i;
+            }
+        }
+
+        if (frequentIndex == -1) {
+            System.out.println("No Most Frequent Name");
+        } else {
+            System.out.println("Most Frequent Name: " + names[frequentIndex]);
+        }
+    }
 }
