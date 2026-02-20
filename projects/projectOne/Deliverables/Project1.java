@@ -222,7 +222,7 @@ public class Project1 {
         // ====== Outputs ======
         System.out.println("Name Count: " + nameCount);
         System.out.println("Letter Count Total: " + totalLetters);
-        System.out.printf("Avg Name Length: %.1f%n", avgLength);
+        System.out.printf("Avg Name Length: %.2f%n", avgLength);
         System.out.println("Shortest Name: " + shortest);
         System.out.println("Longest Name: " + longest);
         System.out.printf("Population Standard Deviation: %.2f%n", stdDeviation);
