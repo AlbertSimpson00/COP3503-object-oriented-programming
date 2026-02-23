@@ -21,7 +21,6 @@ public class LabProgram {
          for(int k = 0; k < i; k++) {
             if (listInts[j] == listInts[k]) {
                currCount++;
-               System.out.println(listInts[j] + " " + currCount);
             }
          }
          if (currCount > maxCount) {
