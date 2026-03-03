@@ -72,23 +72,15 @@ public class RoadSection {
     // ---- private helpers from UML ----
 
     private int calcVolumeTotal() {
-        if (roadVolume == null) return 0;
-
-        return roadVolume.getVolumeSensor1()
-                + roadVolume.getVolumeSensor2()
-                + roadVolume.getVolumeSensor3()
-                + roadVolume.getVolumeSensor4()
-                + roadVolume.getVolumeSensor5();
+        return 0;
     }
 
     private double calcVolumeAvg() {
         // 5 volume sensors
-        return volumeTotal / 5.0;
+        return 0.0;
     }
 
     private double calcSpeedAvg() {
-        if (roadSpeed == null) return 0.0;
-
-        return (roadSpeed.getSpeedSensor1() + roadSpeed.getSpeedSensor2()) / 2.0;
+        return 0.0;
     }
 }
