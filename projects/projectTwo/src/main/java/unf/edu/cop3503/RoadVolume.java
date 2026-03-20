@@ -1,6 +1,8 @@
 package unf.edu.cop3503;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
+
 
 public class RoadVolume {
     private Date date;
@@ -9,7 +11,6 @@ public class RoadVolume {
     private int volumeSensor2;
     private int volumeSensor3;
     private int volumeSensor4;
-    private int volumeSensor5;
 
     public RoadVolume(Date date, String time,
                       int volumeSensor1, int volumeSensor2,
@@ -22,13 +23,14 @@ public class RoadVolume {
         this.volumeSensor2 = volumeSensor2;
         this.volumeSensor3 = volumeSensor3;
         this.volumeSensor4 = volumeSensor4;
-        this.volumeSensor5 = volumeSensor5;
     }
 
     // Suggested format:
     // date,time,v1,v2,v3,v4,v5
     public String getFileData() {
-        return null;
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        return outputDateFormat.format(date) + "," + time + "," + volumeSensor1  + "," + volumeSensor2 + "," + volumeSensor3 + "," + volumeSensor4;
     }
 
     public Date getDate() {
@@ -77,13 +79,5 @@ public class RoadVolume {
 
     public void setVolumeSensor4(int volumeSensor4) {
         this.volumeSensor4 = volumeSensor4;
-    }
-
-    public int getVolumeSensor5() {
-        return volumeSensor5;
-    }
-
-    public void setVolumeSensor5(int volumeSensor5) {
-        this.volumeSensor5 = volumeSensor5;
     }
 }

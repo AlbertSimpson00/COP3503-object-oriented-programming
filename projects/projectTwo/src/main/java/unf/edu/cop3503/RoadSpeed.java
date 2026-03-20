@@ -1,5 +1,6 @@
 package unf.edu.cop3503;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RoadSpeed {
@@ -17,7 +18,9 @@ public class RoadSpeed {
 
     // Suggested file format: date,time,speed1,speed2
     public String getFileData() {
-        return null;
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        return outputDateFormat.format(date) + "," + time + "," + speedSensor1  + "," + speedSensor2;
     }
 
     public Date getDate() {
