@@ -20,7 +20,7 @@ public class RoadSpeed {
     public String getFileData() {
         SimpleDateFormat outputDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-        return outputDateFormat.format(date) + "," + time + "," + speedSensor1  + "," + speedSensor2;
+        return outputDateFormat.format(date) + "," + time + "," + speedSensor1 + "," + speedSensor2;
     }
 
     public Date getDate() {

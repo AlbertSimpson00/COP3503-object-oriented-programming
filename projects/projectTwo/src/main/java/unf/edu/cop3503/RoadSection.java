@@ -21,7 +21,7 @@ public class RoadSection {
     // Suggested file format:
     // [roadVolume data],[roadSpeed data],volumeTotal,volumeAvg,speedAvg
     public String getFileData() {
-        return null;
+        return roadVolume.getFileData() + "," + roadSpeed.getSpeedSensor1() + "," + roadSpeed.getSpeedSensor2() + "," + volumeTotal + "," + volumeAvg + "," + speedAvg;
     }
 
     public RoadVolume getRoadVolume() {
@@ -72,15 +72,15 @@ public class RoadSection {
     // ---- private helpers from UML ----
 
     private int calcVolumeTotal() {
-        return 0;
+        return roadVolume.getVolumeSensor1() + roadVolume.getVolumeSensor2() + roadVolume.getVolumeSensor3() + roadVolume.getVolumeSensor4();
     }
 
     private double calcVolumeAvg() {
-        // 5 volume sensors
-        return 0.0;
+        // 4 volume sensors
+        return calcVolumeTotal() / 4.0;
     }
 
     private double calcSpeedAvg() {
-        return 0.0;
+        return (roadSpeed.getSpeedSensor1() + roadSpeed.getSpeedSensor2()) / 2.0;
     }
 }

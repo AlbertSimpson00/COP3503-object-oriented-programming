@@ -30,7 +30,7 @@ public class RoadVolume {
     public String getFileData() {
         SimpleDateFormat outputDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-        return outputDateFormat.format(date) + "," + time + "," + volumeSensor1  + "," + volumeSensor2 + "," + volumeSensor3 + "," + volumeSensor4;
+        return outputDateFormat.format(date) + "," + time + "," + volumeSensor1 + "," + volumeSensor2 + "," + volumeSensor3 + "," + volumeSensor4;
     }
 
     public Date getDate() {
