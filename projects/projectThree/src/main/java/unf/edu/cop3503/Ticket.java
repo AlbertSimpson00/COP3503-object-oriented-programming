@@ -1,6 +1,6 @@
 package unf.edu.cop3503;
 
-public class Ticket /*implements Printable*/{
+public class Ticket {
     protected Customer customer;
     protected String createdAt, ticketId;
 

@@ -1,6 +1,6 @@
 package unf.edu.cop3503;
 
-public class Customer extends Person /*implements Printable*/{
+public class Customer extends Person {
     String customerId, accountNumber;
 
     public Customer(String firstName, String lastName, String address, String phoneNumber, String email, String customerId, String accountNumber) {
@@ -10,7 +10,10 @@ public class Customer extends Person /*implements Printable*/{
     }
 
 
-    // public getFileData(); (implements Printable)
+    @Override
+    public String getFileData() {
+        return super.getFileData() + "C-" + customerId + "C-" + firstName + "C-" + lastName;
+    }
 
     public String getCustomerId() {
         return customerId;

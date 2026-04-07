@@ -1,6 +1,6 @@
 package unf.edu.cop3503;
 
-public class Employee extends Person /*implements Printable*/{
+public class Employee extends Person {
     protected String employeeId, clockedIn, hiredDate;
 
     public Employee(String firstName, String lastName, String address, String phoneNumber, String email, String employeeId, String clockedIn, String hiredDate) {
@@ -10,7 +10,10 @@ public class Employee extends Person /*implements Printable*/{
         this.hiredDate = hiredDate;
     }
 
-    // public getFileData();
+    @Override
+    public String getFileData() {
+        return super.getFileData() + "E-" + employeeId + "E-" + firstName + "E-" + lastName + "E-" + clockedIn;
+    }
 
     public String getEmployeeId() {
         return employeeId;
