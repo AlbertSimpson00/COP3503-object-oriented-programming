@@ -3,7 +3,9 @@ package unf.edu.cop3503;
 public class Employee extends Person {
     protected String employeeId, clockedIn, hiredDate;
 
-    public Employee(String firstName, String lastName, String address, String phoneNumber, String email, String employeeId, String clockedIn, String hiredDate) {
+    public Employee(String firstName, String lastName, String address,
+                    String phoneNumber, String email, String employeeId,
+                    String clockedIn, String hiredDate) {
         super(firstName, lastName, address, phoneNumber, email);
         this.employeeId = employeeId;
         this.clockedIn = clockedIn;

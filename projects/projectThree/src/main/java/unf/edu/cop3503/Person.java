@@ -3,7 +3,8 @@ package unf.edu.cop3503;
 public class Person implements Printable {
     protected String firstName, lastName, address, phoneNumber, email;;
 
-    public Person(String firstName, String lastName, String address, String phoneNumber, String email){
+    public Person(String firstName, String lastName,
+                  String address, String phoneNumber, String email){
 
         this.firstName = firstName;
         this.lastName = lastName;

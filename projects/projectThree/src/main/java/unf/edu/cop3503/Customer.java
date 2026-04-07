@@ -3,7 +3,8 @@ package unf.edu.cop3503;
 public class Customer extends Person {
     String customerId, accountNumber;
 
-    public Customer(String firstName, String lastName, String address, String phoneNumber, String email, String customerId, String accountNumber) {
+    public Customer(String firstName, String lastName, String address,
+                    String phoneNumber, String email, String customerId, String accountNumber) {
         super(firstName, lastName, phoneNumber, address, email);
         this.customerId = customerId;
         this.accountNumber = accountNumber;
