@@ -1,0 +1,12 @@
+Employee getFileData Example:
+	E-employeeId,E-firstName,E-lastName,E-clockedIn
+Tier2Employee getFileData Example:
+	E-employeeId,E-firstName,E-lastName,E-clockedIn,E-certification
+Customer getFileData Example:
+	C-customerId,C-firstName,C-lastName
+Ticket getFileData Example:
+	C-customerId,C-firstName,C-lastName,ticketId,T-createdAt
+WorkOrder getFileData Example1:
+	C-customerId,C-firstName,C-lastName,ticketId,T-createdAt,W-createdAt,E-employeeId,E-firstName,E-lastName,E-clockedIn
+WorkOrder2 getFileData Example2:
+	C-customerId,C-firstName,C-lastName,ticketId,T-createdAt,W-createdAt,E-employeeId,E-firstName,E-lastName,E-clockedIn,E-certification
