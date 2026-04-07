@@ -1,7 +1,11 @@
 package unf.edu.cop3503;
 
 public class Person implements Printable {
-    protected String firstName, lastName, address, phoneNumber, email;;
+    protected String firstName;
+    protected String lastName;
+    protected String address;
+    protected String phoneNumber;
+    protected String email;
 
     public Person(String firstName, String lastName,
                   String address, String phoneNumber, String email){

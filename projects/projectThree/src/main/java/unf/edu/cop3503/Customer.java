@@ -13,7 +13,7 @@ public class Customer extends Person {
 
     @Override
     public String getFileData() {
-        return super.getFileData() + "C-" + customerId + "C-" + firstName + "C-" + lastName;
+        return super.getFileData() + "C-" + customerId + ",C-" + firstName + ",C-" + lastName;
     }
 
     public String getCustomerId() {

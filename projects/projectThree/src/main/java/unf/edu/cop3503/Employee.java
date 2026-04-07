@@ -1,7 +1,9 @@
 package unf.edu.cop3503;
 
 public class Employee extends Person {
-    protected String employeeId, clockedIn, hiredDate;
+    protected String employeeId;
+    protected String clockedIn;
+    protected String hiredDate;
 
     public Employee(String firstName, String lastName, String address,
                     String phoneNumber, String email, String employeeId,
@@ -14,7 +16,7 @@ public class Employee extends Person {
 
     @Override
     public String getFileData() {
-        return super.getFileData() + "E-" + employeeId + "E-" + firstName + "E-" + lastName + "E-" + clockedIn;
+        return super.getFileData() + "E-" + employeeId + ",E-" + firstName + ",E-" + lastName + ",E-" + clockedIn;
     }
 
     public String getEmployeeId() {

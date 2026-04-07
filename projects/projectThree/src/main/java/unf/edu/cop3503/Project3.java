@@ -2,6 +2,7 @@ package unf.edu.cop3503;
 
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Project3 {
     String employeeFileName, tier1TicketFileName, tier2TicketFileName, workOrderFileName;
@@ -10,6 +11,11 @@ public class Project3 {
     ArrayList<WorkOrder> workOrderList;
 
     public static void main(String[] args) {
+
+        Scanner scnr = new Scanner(System.in);
+
+        // Object used to read and write files
+        FileHandler fileHandler = new FileHandler();
 
     }
 

@@ -12,8 +12,8 @@ public class Tier2Employee extends Employee {
 
     @Override
     public String getFileData() {
-        return super.getFileData() + "E-" + employeeId + "E-" + firstName + "E-" + lastName
-                + "E-" + clockedIn + "E-" + certification;
+        return super.getFileData() + "E-" + employeeId + ",E-" + firstName + ",E-" + lastName
+                + ",E-" + clockedIn + ",E-" + certification;
     }
 
     public String getCertification() {
