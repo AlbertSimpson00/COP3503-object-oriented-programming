@@ -1,8 +1,19 @@
 package unf.edu.cop3503;
 
+import java.util.ArrayList;
+import java.util.Queue;
 
 public class Project3 {
+    String employeeFileName, tier1TicketFileName, tier2TicketFileName, workOrderFileName;
+    ArrayList<Employee> employeeList;
+    Queue<Ticket> tier1TicketFile, tier2TicketFile;
+    ArrayList<WorkOrder> workOrderList;
+
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome to project3!");
+
+    }
+
+    public static void createWorkOrders() {
+
     }
 }
