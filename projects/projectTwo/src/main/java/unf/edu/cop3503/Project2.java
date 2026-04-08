@@ -1,8 +1,10 @@
 package unf.edu.cop3503;
 
-import java.util.*;
+//import java.util.*;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Main driver class for Project 2.

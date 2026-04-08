@@ -1,22 +1,13 @@
 package unf.edu.cop3503;
 
-import com.sun.jdi.ClassType;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class FileHandler {
-    private ArrayList<Employee> employeeList;
-    private ArrayList<WorkOrder> workOrderList;
-
-    public FileHandler(ArrayList<Employee> employeeList, ArrayList<WorkOrder> workOrderList) {
-        this.employeeList = employeeList;
-        this.workOrderList = workOrderList;
-    }
 
     public void writeData(String workOrderFileName){
         try {
@@ -29,11 +20,13 @@ public class FileHandler {
             output.println("customer_id,customer_first_name,customer_last_name,ticket_id,ticket_createdAt,workorder_createdAt,employee_id,employee_first_name,employee_last_name,clocked_in,certification");
 
             // Loop to write each road section inside output file
-            for (int i = 0; i < workOrderList.size(); i++) {
-                WorkOrder workOrder = workOrderList.get(i);
+            for (int i = 0; i < Project3.workOrderList.size(); i++) {
+                WorkOrder workOrder = Project3.workOrderList.get(i);
                 output.println(workOrder.getFileData());
                 logger(workOrder.getFileData());
             }
+
+            logger("Work Orders Created. Program Exiting");
 
             // Close output writer
             output.close();
@@ -43,7 +36,7 @@ public class FileHandler {
     }
 
     public void readEmployeeData(String employeeFileName) throws FileNotFoundException {
-        employeeList.clear();
+        Project3.employeeList.clear();
         logger("Loading Employee Data");
 
         Scanner fileScnr = new Scanner(new File(employeeFileName));
@@ -73,9 +66,9 @@ public class FileHandler {
             String certification = parts[9].trim();
 
             if (tier.equalsIgnoreCase("tier2")) {
-                employeeList.add(new Tier2Employee(firstName, lastName, address, phoneNumber, email, employeeId, clockedIn, hiredDate, certification));
+                Project3.employeeList.add(new Tier2Employee(firstName, lastName, address, phoneNumber, email, employeeId, clockedIn, hiredDate, certification));
             } else {
-                employeeList.add(new Employee(firstName, lastName, address, phoneNumber, email, employeeId, clockedIn, hiredDate));
+                Project3.employeeList.add(new Employee(firstName, lastName, address, phoneNumber, email, employeeId, clockedIn, hiredDate));
             }
         }
 
