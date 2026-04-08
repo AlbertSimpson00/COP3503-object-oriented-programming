@@ -41,8 +41,8 @@ public class Project3 {
             fileHandler.readEmployeeData(project.employeeFileName);
 
             System.out.println("Loading Ticket Data");
-            tier1TicketFile = fileHandler.readTicketData(project.tier1TicketFileName);
             tier2TicketFile = fileHandler.readTicketData(project.tier2TicketFileName);
+            tier1TicketFile = fileHandler.readTicketData(project.tier1TicketFileName);
 
             System.out.println("Creating Work Orders");
             createWorkOrders();
@@ -76,22 +76,6 @@ public class Project3 {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy H:mm:ss");
 
-        while (!tier1TicketFile.isEmpty()) {
-            Ticket ticket = tier1TicketFile.poll();
-            Employee employee = tier1Employees.get(t1Index);
-            String time = dateFormat.format(System.currentTimeMillis());
-
-            WorkOrder workOrder = new WorkOrder(employee, ticket, time);
-
-            workOrderList.add(workOrder);
-
-            t1Index++;
-
-            if (t1Index >= tier1Employees.size()) {
-                t1Index = 0;
-            }
-        }
-
         while (!tier2TicketFile.isEmpty()) {
             Ticket ticket = tier2TicketFile.poll();
             Employee employee = tier2Employees.get(t2Index);
@@ -105,6 +89,22 @@ public class Project3 {
 
             if (t2Index >= tier2Employees.size()) {
                 t2Index = 0;
+            }
+        }
+
+        while (!tier1TicketFile.isEmpty()) {
+            Ticket ticket = tier1TicketFile.poll();
+            Employee employee = tier1Employees.get(t1Index);
+            String time = dateFormat.format(System.currentTimeMillis());
+
+            WorkOrder workOrder = new WorkOrder(employee, ticket, time);
+
+            workOrderList.add(workOrder);
+
+            t1Index++;
+
+            if (t1Index >= tier1Employees.size()) {
+                t1Index = 0;
             }
         }
     }

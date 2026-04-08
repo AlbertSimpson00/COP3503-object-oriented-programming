@@ -12,7 +12,7 @@ public class Tier2Employee extends Employee {
 
     @Override
     public String getFileData() {
-        return super.getFileData() + "E-" + certification;
+        return super.getFileData() + "," + certification;
     }
 
     public String getCertification() {

@@ -16,7 +16,7 @@ public class Employee extends Person {
 
     @Override
     public String getFileData() {
-        return super.getFileData() + "E-" + employeeId + ",E-" + firstName + ",E-" + lastName + ",E-" + clockedIn;
+        return super.getFileData() + employeeId + "," + firstName + "," + lastName + "," + clockedIn;
     }
 
     public String getEmployeeId() {
