@@ -1,0 +1,4 @@
+DateTime,FirstName,LastName,PhoneNumber,Email,Sex,Water,Meals,Wheat,Sugar,Dairy,Miles,Weight
+04/18/2026 00:14:17,Jim,Smith,123-123-1234,jsmith@email.com,Male,10,3,TRUE,TRUE,TRUE,Less than 1 Mile,215
+04/18/2026 00:14:47,Marry,Writer,345-345-3456,mwriter@email.com,Female,12,2,FALSE,FALSE,TRUE,More than 3 miles,125
+04/18/2026 00:14:48,,,,,null,15,3,FALSE,FALSE,FALSE,Less than 1 Mile,null

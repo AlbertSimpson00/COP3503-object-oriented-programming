@@ -54,18 +54,18 @@ public class CustomJFrame extends JFrame {
     public CustomJFrame(){
         // TODO: implement this method
         setTitle("Dietary Survey");
-        setSize(380,760);
+        setSize(380,720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         fileHandler = new FileHandler();
 
-        headingLabel = new JLabel("Personal Information");
+        headingLabel = new JLabel("Personal Information", SwingConstants.CENTER);
         firstNameLabel = new JLabel("First Name:");
         lastNameLabel = new JLabel("Last Name:");
         phoneNumberLabel = new JLabel("Phone Number:");
         emailLabel = new JLabel("Email:");
-        dietaryLabel = new JLabel("Dietary Questions");
+        dietaryLabel = new JLabel("Dietary Questions", SwingConstants.CENTER);
         genderLabel = new JLabel("Sex:");
         waterLabel = new JLabel("How many cups of water on average do you drink a day?");
         mealsLabel = new JLabel("How many meals on average do you eat a day?");
@@ -221,6 +221,7 @@ public class CustomJFrame extends JFrame {
         gridConstraints.gridy++;
         JPanel sliderPanel = new JPanel();
         sliderPanel.setBackground(Color.lightGray);
+        mealSlider.setOpaque(false);
         sliderPanel.add(mealSlider);
         mainPanel.add(sliderPanel, gridConstraints);
 
@@ -269,14 +270,14 @@ public class CustomJFrame extends JFrame {
         // TODO: implement InnerActionListener & ActionPerformed & clearForm inside.
 
         @Override
-        public void actionPerformed (ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {
             if (e.getSource() == submitButton) {
                 String firstName = firstNameTextField.getText();
                 String lastName = lastNameTextField.getText();
                 String phoneNum = phoneNumberTextField.getText();
                 String email = emailTextField.getText();
 
-                String sex = "";
+                String sex = "null";
                 if(maleRadioButton.isSelected()) {
                     sex = "Male";
                 } else if (femaleRadioButton.isSelected()) {
@@ -288,12 +289,35 @@ public class CustomJFrame extends JFrame {
                 String water = waterIntakeSpinner.getValue().toString();
                 String meals = Integer.toString(mealSlider.getValue());
 
-                String wheat = Boolean.toString(wheatCheckBox.isSelected());
-                String sugar = Boolean.toString(sugarCheckBox.isSelected());
-                String dairy = Boolean.toString(dairyCheckBox.isSelected());
+                String wheat;
+                if (wheatCheckBox.isSelected()) {
+                    wheat = "TRUE";
+                } else {
+                    wheat = "FALSE";
+                }
+
+                String sugar;
+                if (sugarCheckBox.isSelected()) {
+                    sugar = "TRUE";
+                } else {
+                    sugar = "FALSE";
+                }
+
+                String dairy;
+                if (dairyCheckBox.isSelected()) {
+                    dairy = "TRUE";
+                } else {
+                    dairy = "FALSE";
+                }
 
                 String miles = walkComboBox.getSelectedItem().toString();
-                String weight = weightFormattedTextField.getText();
+
+                String weight;
+                if (weightFormattedTextField.getValue() == null) {
+                    weight = "null";
+                } else {
+                    weight = weightFormattedTextField.getText();
+                }
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
                 String dateTime = LocalDateTime.now().format(formatter);
@@ -310,7 +334,22 @@ public class CustomJFrame extends JFrame {
         }
 
         private void clearForm() {
-            // TODO: Set all fields to null
+            firstNameTextField.setText("");
+            lastNameTextField.setText("");
+            phoneNumberTextField.setText("");
+            emailTextField.setText("");
+
+            radioButtonGroup.clearSelection();
+
+            waterIntakeSpinner.setValue(15);
+            mealSlider.setValue(3);
+
+            dairyCheckBox.setSelected(false);
+            wheatCheckBox.setSelected(false);
+            sugarCheckBox.setSelected(false);
+
+            walkComboBox.setSelectedIndex(0);
+            weightFormattedTextField.setValue(null);
         }
     }
 }
