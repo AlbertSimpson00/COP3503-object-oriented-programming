@@ -5,7 +5,6 @@ import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,7 +39,7 @@ public class CustomJFrame extends JFrame {
 
     private JCheckBox wheatCheckBox;
     private JCheckBox sugarCheckBox;
-    private JCheckBox diaryCheckBox;
+    private JCheckBox dairyCheckBox;
 
     private JComboBox<String> walkComboBox;
     private String[] walkOptions;
@@ -55,7 +54,7 @@ public class CustomJFrame extends JFrame {
     public CustomJFrame(){
         // TODO: implement this method
         setTitle("Dietary Survey");
-        setSize(380,620);
+        setSize(380,760);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -63,7 +62,7 @@ public class CustomJFrame extends JFrame {
 
         headingLabel = new JLabel("Personal Information");
         firstNameLabel = new JLabel("First Name:");
-        lastNameLabel = new JLabel("Last Name");
+        lastNameLabel = new JLabel("Last Name:");
         phoneNumberLabel = new JLabel("Phone Number:");
         emailLabel = new JLabel("Email:");
         dietaryLabel = new JLabel("Dietary Questions");
@@ -83,24 +82,31 @@ public class CustomJFrame extends JFrame {
         femaleRadioButton = new JRadioButton("Female");
         preferRadioButton = new JRadioButton("Prefer not to say");
 
+        maleRadioButton.setOpaque(false);
+        femaleRadioButton.setOpaque(false);
+        preferRadioButton.setOpaque(false);
+
         radioButtonGroup = new ButtonGroup();
         radioButtonGroup.add(maleRadioButton);
         radioButtonGroup.add(femaleRadioButton);
         radioButtonGroup.add(preferRadioButton);
 
-        waterIntakeSpinner = new JSpinner(new SpinnerNumberModel(15, 0, 40, 1));
+        waterIntakeSpinner = new JSpinner(new SpinnerNumberModel(15, 0, 50, 1));
 
         mealSlider = new JSlider(0, 10, 3);
         mealSlider.setMajorTickSpacing(1);
         mealSlider.setMinorTickSpacing(1);
 
+        mealSlider.setPaintLabels(true);
         mealSlider.setPaintTicks(true);
-        mealSlider.setPaintTicks(true);
-        mealSlider.setLabelTable(mealSlider.createStandardLabels(1));
 
-        diaryCheckBox = new JCheckBox("Dairy");
+        dairyCheckBox = new JCheckBox("Dairy");
         wheatCheckBox = new JCheckBox("Wheat");
         sugarCheckBox = new JCheckBox("Sugar");
+
+        dairyCheckBox.setOpaque(false);
+        wheatCheckBox.setOpaque(false);
+        sugarCheckBox.setOpaque(false);
 
         walkOptions = new String[4];
         walkOptions[0] = "Less than 1 Mile";
@@ -111,15 +117,13 @@ public class CustomJFrame extends JFrame {
         walkComboBox = new JComboBox<String>(walkOptions);
 
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
-        NumberFormatter numberFormatter = new NumberFormatter();
+        NumberFormatter numberFormatter = new NumberFormatter(numberFormat);
         numberFormatter.setValueClass(Integer.class);
         numberFormatter.setAllowsInvalid(false);
         numberFormatter.setMinimum(0);
 
         weightFormattedTextField = new JFormattedTextField(numberFormatter);
         weightFormattedTextField.setColumns(20);
-
-
 
         // Buttons
         clearButton = new JButton("Clear");
@@ -130,8 +134,8 @@ public class CustomJFrame extends JFrame {
 
         // InnerAction Listener
         InnerActionListener buttonListener = new InnerActionListener();
-        // clearButton.addActionListener(buttonListener);
-        // submitButton.addActionListener(buttonListener);
+        clearButton.addActionListener(buttonListener);
+        submitButton.addActionListener(buttonListener);
 
         /// ==================== mainPanel layouts ====================
 
@@ -140,7 +144,10 @@ public class CustomJFrame extends JFrame {
         mainPanel.setLayout(new GridBagLayout());
 
         GridBagConstraints gridConstraints = new GridBagConstraints();
-        /// gridConstraints.insets = new Insets(2, 2, 2, 2);
+
+        // Insets to add padding between each label
+        gridConstraints.insets = new Insets(6, 6, 6, 6);
+
         gridConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridConstraints.anchor = GridBagConstraints.WEST;
 
@@ -219,9 +226,12 @@ public class CustomJFrame extends JFrame {
 
         // Diet checkbox Label
         gridConstraints.gridy++;
+        mainPanel.add(checkBoxLabel, gridConstraints);
+
+        gridConstraints.gridy++;
         JPanel checkBoxPanel = new JPanel();
         checkBoxPanel.setBackground(Color.lightGray);
-        checkBoxPanel.add(diaryCheckBox);
+        checkBoxPanel.add(dairyCheckBox);
         checkBoxPanel.add(wheatCheckBox);
         checkBoxPanel.add(sugarCheckBox);
         mainPanel.add(checkBoxPanel, gridConstraints);
@@ -240,13 +250,13 @@ public class CustomJFrame extends JFrame {
 
         gridConstraints.gridy++;
         JPanel weightPanel = new JPanel();
-        weightPanel.setBackground(Color.LIGHT_GRAY);
+        weightPanel.setBackground(Color.lightGray);
         weightPanel.add(weightFormattedTextField);
         mainPanel.add(weightPanel, gridConstraints);
 
         gridConstraints.gridy++;
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 20, 0));
-        buttonPanel.setBackground(Color.LIGHT_GRAY);
+        buttonPanel.setBackground(Color.lightGray);
         buttonPanel.add(clearButton);
         buttonPanel.add(submitButton);
         mainPanel.add(buttonPanel, gridConstraints);
@@ -255,7 +265,52 @@ public class CustomJFrame extends JFrame {
         setVisible(true);
     }
 
-    private class InnerActionListener  {
+    private class InnerActionListener implements ActionListener {
         // TODO: implement InnerActionListener & ActionPerformed & clearForm inside.
+
+        @Override
+        public void actionPerformed (ActionEvent e) {
+            if (e.getSource() == submitButton) {
+                String firstName = firstNameTextField.getText();
+                String lastName = lastNameTextField.getText();
+                String phoneNum = phoneNumberTextField.getText();
+                String email = emailTextField.getText();
+
+                String sex = "";
+                if(maleRadioButton.isSelected()) {
+                    sex = "Male";
+                } else if (femaleRadioButton.isSelected()) {
+                    sex = "Female";
+                } else if (preferRadioButton.isSelected()) {
+                    sex = "Prefer not to say";
+                }
+
+                String water = waterIntakeSpinner.getValue().toString();
+                String meals = Integer.toString(mealSlider.getValue());
+
+                String wheat = Boolean.toString(wheatCheckBox.isSelected());
+                String sugar = Boolean.toString(sugarCheckBox.isSelected());
+                String dairy = Boolean.toString(dairyCheckBox.isSelected());
+
+                String miles = walkComboBox.getSelectedItem().toString();
+                String weight = weightFormattedTextField.getText();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+                String dateTime = LocalDateTime.now().format(formatter);
+
+                String surveyData = dateTime + "," + firstName + "," + lastName  + "," + phoneNum  + "," +
+                        email + "," + sex + "," + water + "," + meals  + "," +wheat  + "," + sugar  + "," +
+                        dairy  + "," + miles  + "," + weight;
+
+                fileHandler.writeResults(surveyData);
+                clearForm();
+            } else if (e.getSource() == clearButton) {
+                clearForm();
+            }
+        }
+
+        private void clearForm() {
+            // TODO: Set all fields to null
+        }
     }
 }
