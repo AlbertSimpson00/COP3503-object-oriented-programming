@@ -13,12 +13,12 @@ public class FileHandler{
         surveyFile = "survey_results.csv";
         try{
             // Set FileWriter append state = false to overwrite data
-            FileWriter fw = new FileWriter(surveyFile, false);
-            PrintWriter pw = new PrintWriter(fw);
+            fileOutput = new FileWriter(surveyFile, false);
+            printWriter = new PrintWriter(fileOutput);
 
-            pw.println("DateTime,FirstName,LastName,PhoneNumber,Email,Sex,Water,Meals,Wheat,Sugar,Dairy,Miles,Weight");
-            pw.close();
-            fw.close();
+            printWriter.println("DateTime,FirstName,LastName,PhoneNumber,Email,Sex,Water,Meals,Wheat,Sugar,Dairy,Miles,Weight");
+            printWriter.close();
+            fileOutput.close();
         }
         catch(IOException e){
             System.out.println("Error writing file");
@@ -26,13 +26,12 @@ public class FileHandler{
     }
 
     public void writeResults(String surveyData){
-        // surveyFile = "survey_results.csv";
-        try(FileWriter fw = new FileWriter(surveyFile, true)){
-            PrintWriter pw = new PrintWriter(fw);
+        try(FileWriter fileOutput = new FileWriter(surveyFile, true)){
+            printWriter = new PrintWriter(fileOutput);
 
-            pw.println(surveyData);
-            pw.close();
-            fw.close();
+            printWriter.println(surveyData);
+            printWriter.close();
+
         }
         catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());

@@ -146,7 +146,7 @@ public class CustomJFrame extends JFrame {
         GridBagConstraints gridConstraints = new GridBagConstraints();
 
         // Insets to add padding between each label
-        gridConstraints.insets = new Insets(6, 6, 6, 6);
+        gridConstraints.insets = new Insets(5, 5, 5, 5);
 
         gridConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridConstraints.anchor = GridBagConstraints.WEST;
